@@ -1,0 +1,584 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.6">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .border {
+            height: 1300px;
+            width: 600px;
+            border: 20px solid;
+            border-radius: 50px;
+            border-bottom: 30px solid;
+            border-top: 20px solid;
+            position: relative;
+        }
+
+        .screen {
+            position: relative;
+            height: 1330px;
+            width: 630px;
+            border-radius: 50px;
+            background: linear-gradient(45deg, red, white, cyan);
+        }
+
+
+        ul {
+            position: absolute;
+            top: 1000px;
+            list-style: none;
+            display: block;
+        }
+
+        ul li {
+            float: right;
+            padding-right: 30px;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        #datetime {
+            font-size: 45pt;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%,-30%);
+        }
+
+        #upage {
+            height: 1300px;
+            border-radius: 25px;
+            width: 600px;
+            background: white;
+            margin-top: -47px;
+            display: none;
+        }
+
+        .header {
+            position: absolute;
+            margin-top: 50px;
+            height: 80px;
+            width: 600px;
+            /* align: center; */
+            background: #BFB8B8;
+        }
+
+        .search {
+            height: 30px;
+            width: 250px;
+            /* align: left; */
+            position: absolute;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            font-size: 16pt;
+            padding: 7px;
+            margin-top: 20px;
+            margin-left: -120px;
+            line-height: 60px;
+        }
+
+        .bottom {
+            position: absolute;
+            margin-top: 10px;
+            height: 85px;
+            width: 600px;
+            /* align: center; */
+            background: #BFB8B8;
+        }
+
+
+
+
+
+        .wpage {
+            display: none;
+            border-radius: 50px;
+            height: 1300px;
+            width: 600px;
+            border-radius: 25px;
+            background: #E6DEDE;
+
+        }
+
+        #page1 {
+            margin-top: -47px;
+
+            width: 600px;
+            border-radius: 50px;
+            height: 1300px;
+            width: 600px;
+            border-radius: 25px;
+            background: #E6DEDE;
+            visibility: visible;
+        }
+
+        #page2 {
+
+            visibility: hidden;
+        }
+
+        header {
+            position: relative;
+            margin-top: -1260px;
+            width: 600px;
+            height: 150px;
+            background: #105408;
+
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="screen" id="screen">
+            <div class="border">
+                <!--battery-->
+                <svg viewBox="2 0 1 16" class="bi bi-battery-full" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg" style="height:50px; width:150px; float:right;">
+                    <path fill-rule="evenodd"
+                        d="M12 5H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zM2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z">
+                    </path>
+                    <path d="M2 6h10v4H2V6zm12.5 3.5a1.5 1.5 0 0 0 0-3v3z"></path>
+                </svg>
+                <!--HD icon-->
+                <svg width="6em" height="2.1em" style=" position: absolute;right:70px; padding-top:8px;"
+                    viewBox="2 0 1 16" class="bi bi-badge-hd-fill" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.53 5.968h-.843v4.06h.843c1.117 0 1.622-.667 1.622-2.02 0-1.354-.51-2.04-1.622-2.04z">
+                    </path>
+                    <path fill-rule="evenodd"
+                        d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm5.396 3.001V11H6.209V8.43H3.687V11H2.5V5.001h1.187v2.44h2.522V5h1.187zM8.5 11V5.001h2.188c1.824 0 2.685 1.09 2.685 2.984C13.373 9.893 12.5 11 10.69 11H8.5z">
+                    </path>
+                </svg>
+                <!--moon-->
+                <svg width="6em" height="2em" style="position: absolute;right:100px; padding-top:8px;"
+                    viewBox="0 0 14 16" class="bi bi-moon" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z">
+                    </path>
+                </svg>
+                <!--dot camera-->
+                <svg style="position: absolute;left:50%; transform: translate(-50%,0);" width="4em" height="4em" viewBox="0 6 16 16"
+                    class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="8" cy="8" r="8"></circle>
+                </svg>
+                <!--network tower1-->
+                <svg style=" position: relative; float:left; padding-top:11.5px; padding-left:10px;" width="1.8em"
+                    height="1.8em" viewBox="0 0 16 16" class="bi bi-reception-4" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-8zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-11z">
+                    </path>
+                </svg>
+                <!--network tower2-->
+                <svg style="position: relative; float:left; padding-top:11.5px; padding-left:10px;" width="1.8em"
+                    height="1.8em" viewBox="0 0 16 16" class="bi bi-reception-4" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-5zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-8zm4-3a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-11z">
+                    </path>
+                </svg>
+                <!-- real time  -->
+                <span id="datetime"></span>
+
+                <!--apps icon -->
+                <ul class="list" id="list">
+                    <li class="utube" onclick="utube()"><i class="fa fa-youtube-play"
+                            style="font-size:85px;color:red;"></i><br>YouTube</li>
+                    <li class="facebook" onclick="facebook()"><i class="fa fa-facebook-square"
+                            style="font-size:85px;color:blue"></i><br>Facebook</li>
+                    <li class="whatsapp" onclick="whatsapp()"> <i class="fa fa-whatsapp"
+                            style="font-size:85px;color:green"></i><br>What's App</li>
+                    <li class="apple" onclick="apple()"><i class="fa fa-apple"
+                            style="font-size:85px;color:black"></i><br>Mac-Apple</li>
+                </ul>
+                <!--back button-->
+                <svg id="button1" onclick="goBack()" style="color:black ; position: relative;top:1245px; left:40%;"
+                    width="3.9em" height="2.7em" viewBox="0 0 16 16" class="bi bi-caret-left" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 0 1 0-1.506l5.48-4.796A1 1 0 0 1 11 3.204v9.592a1 1 0 0 1-1.659.753z">
+                    </path>
+                </svg>
+                <!--back to home screen button-->
+                <svg id="button2" onclick="goHome()" style="color:black; position: relative;top:1240px;left:4%;"
+                    width="2.3em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z">
+                    </path>
+                    <path fill-rule="evenodd"
+                        d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z">
+                    </path>
+                </svg>
+                <!--recent tasks button-->
+                <svg id="button3" style="color:black ; position: relative;top:1240px;right:30%;" width="2.3em"
+                    viewBox="0 0 16 16" class="bi bi-justify" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z">
+                    </path>
+                </svg>
+                <!--utube page-->
+                <div id="upage">
+                    <div class="header">
+                        <i class="fa fa-youtube-play" style="padding:10px; font-size:60px;color:red;float:left;"><b
+                                style=" color:black; position:absolute;margin-top:10px; font-size:25pt;padding:7px;">
+                                <font face="impact">YouTube</font>
+                            </b></i>
+                        <input type="text" placeholder="  Search..." class="search" id="search">
+                        <svg style=" padding-top:20px;position:absolute; margin-left:180px;" width="3em" height="3em"
+                            viewBox="0 0 16 16" class="bi bi-person-circle" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z">
+                            </path>
+                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                            <path fill-rule="evenodd"
+                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"></path>
+                        </svg>
+                    </div>
+                    <br>
+                    <!--utube videos-->
+                    <iframe width="580" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY"> </iframe>
+                    <br>
+                    <br>
+                    <iframe height="345" width="580" src="https://www.youtube.com/embed/il_t1WVLNxk"> </iframe>
+                    <br>
+                    <br>
+                    <iframe height="345" width="580" src="https://www.youtube.com/embed/F6m0ghjadlw"> </iframe>
+                    <!--utube bottom-->
+                    <div class="bottom">
+                        <svg style="color:red;position: absolute;margin-left:-250px;margin-top:20px;" widthh="2.5em"
+                            height="2.5em" viewBox="0 0 16 16" class="bi bi-house-door-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z">
+                            </path>
+                            <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"></path>
+                        </svg>
+                        <svg style="position: absolute;margin-left:-100px;margin-top:20px;" widthh="2.5em"
+                            height="2.5em" viewBox="0 0 16 16" class="bi bi-collection-play-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M1.5 14.5A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zm5.265-7.924A.5.5 0 0 0 6 7v5a.5.5 0 0 0 .765.424l4-2.5a.5.5 0 0 0 0-.848l-4-2.5zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z">
+                            </path>
+                        </svg>
+                        <svg style="position: absolute;margin-left:60px;margin-top:20px;" widthh="2.5em" height="2.5em"
+                            viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z">
+                            </path>
+                        </svg>
+                        <svg style="position: absolute;margin-left:200px;margin-top:20px;" widthh="2.5em" height="2.5em"
+                            viewBox="0 0 16 16" class="bi bi-folder-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z">
+                            </path>
+                        </svg>
+                    </div>
+                </div>
+                <!--whatsapp page-->
+                <div class="wpage" id="wpage">
+                    <div id="page1">
+                        <nav style="position: relative;left:50px; top:500px">
+                            <img
+                                src="data:image/png;base64,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">
+                        </nav>
+                        <div style="position: relative;top:950px;font-family:vardana; font-size:20pt;">
+                            <b>From</b>
+                            <br>
+                            <b>
+                                <font color="green">Facebook</font>
+                            </b>
+                        </div>
+                    </div>
+                    <div id="page2">
+                        <header>
+                            <!--search-->
+                            <svg style="color: white; position:relative; top:20px;left:250px;" width="2.5em"
+                                height="3em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z">
+                                </path>
+                                <path fill-rule="evenodd"
+                                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z">
+                                </path>
+                            </svg>
+                            <!--three dot-->
+                            <svg style="position: relative; color:white; top:20px;left:290px;" width="2.5em"
+                                height="3em" viewBox="0 0 16 16" class="bi bi-three-dots-vertical" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z">
+                                </path>
+                            </svg>
+                            <!--whatsapp text logo-->
+                            <div
+                                style="font-family:vardana; font-size:30pt; color:white; position:relative; top:-35px; right:180px; font-weight:bold;">
+                                What's App
+                            </div>
+                            <!--camera-->
+                            <svg style="color:#80a883;position:relative;right:255px;top:-5;" width="2.3em"
+                                height="2.3em" viewBox="0 0 16 16" class="bi bi-camera-fill" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"></path>
+                                <path fill-rule="evenodd"
+                                    d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2zm.5 2a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1zm9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0z">
+                                </path>
+                            </svg>
+                            <!--CHATS, STATUS, CALLS text logo-->
+                            <table style="position: relative;top:-65px;left:57px;" cellpadding="25">
+                                <tbody>
+                                    <tr style="color:#80a883;font-size:1.5em; font-family:vardana;">
+                                        <td>
+                                            <font color="white">CHATS</font>
+                                        </td>
+                                        <td>GROUPS</td>
+                                        <td>STATUS</td>
+                                        <td>CALLS</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </header>
+                        <!--contact chat-->
+                        <table style="position: relative;right:0; font-family:vardana;" cellspacing="1"
+                            cellpadding="18">
+                            <tbody>
+                                <tr>
+                                    <td> <img style="height:75px;width:75px;border-radius:50%;"
+                                            src="https://www.w3schools.com/howto/img_avatar2.png">
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">💝Wife💖❤️</b><br><br>I
+                                        miss you so much...😍💖🖤😘
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-person-circle"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z">
+                                            </path>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                            </path>
+                                        </svg>
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">Aditya
+                                            Ekhande</b><br><br>by....🖐️
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <img style="height:75px;width:75px;border-radius:50%;"
+                                            src="https://www.w3schools.com/howto/img_avatar2.png">
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">Khushi
+                                            Sahane</b><br><br>ok.... bye...! good night😴😴
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <svg color="red" width="4em" height="4em" viewBox="0 0 16 16"
+                                            class="bi bi-person-circle" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z">
+                                            </path>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                            </path>
+                                        </svg>
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">Virat Kohali</b><br><br>I
+                                        talk u later...!
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-person-circle"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z">
+                                            </path>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                            </path>
+                                        </svg>
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">Obama Sir</b><br><br>Nice
+                                        to meet you..😊
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <img style="height:75px;width:75px;border-radius:50%;"
+                                            src="https://www.w3schools.com/w3images/avatar2.png">
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b
+                                            style="font-size:20pt;">M.S.Dhoni</b><br><br>Good...!
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td> <img style="height:75px;width:75px;border-radius:50%;"
+                                            src="https://www.w3schools.com/howto/img_avatar.png">
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b
+                                            style="font-size:20pt;">Dad💖❤️💝</b><br><br>tomorrow I'll definitely
+                                        come..😊
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <svg color="pink" width="4em" height="4em" viewBox="0 0 16 16"
+                                            class="bi bi-person-circle" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 0 0 8 15a6.987 6.987 0 0 0 5.468-2.63z">
+                                            </path>
+                                            <path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                                            <path fill-rule="evenodd"
+                                                d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z">
+                                            </path>
+                                        </svg>
+                                        <hr>
+                                    </td>
+                                    <td style="position:reltive;"><b style="font-size:20pt;">Aadinath Raut</b><br><br>Ok
+                                        bye bro...!😘
+                                        <hr style="width:450px;">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--more chat-->
+                        <div
+                            style="background:green;position: relative;left:200px;top:-150px;height:85px;width:85px;border-radius:50%;">
+                            <svg style="position: relative;top:25px;" color="white" width="3em" height="3em"
+                                viewBox="0 0 16 16" class="bi bi-chat-left-text-fill" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!--endwpage-->
+            </div>
+        </div>
+    </center>
+    <!--scripts-->
+    <script>
+        setInterval(datetime, 1000);
+        function datetime() {
+            var dt = new Date();
+            document.getElementById("datetime").innerHTML = dt.toLocaleTimeString();
+
+        }
+        function utube() {
+            var x = document.getElementById("upage");
+            x.style.display = "block";
+            x.style.transition = ".4s";
+            var z = document.getElementById("list");
+            z.style.display = "none";
+            var y = document.getElementById("datetime");
+            y.style.display = "none";
+
+
+        }
+
+        function facebook() {
+            var x = document.getElementById("screen");
+            x.style.background = "blue";
+            x.style.transition = ".4s";
+            var z = document.getElementById("list");
+            z.style.display = "none";
+            document.getElementById("datetime").style.display = "none";
+
+        }
+
+
+        function whatsapp() {
+
+
+            var x = document.getElementById("wpage");
+            x.style.display = "block";
+            x.style.transition = ".5s";
+            var z = document.getElementById("list");
+            z.style.display = "none";
+            document.getElementById("datetime").style.display = "none";
+
+
+        }
+
+        function apple() {
+            var x = document.getElementById("screen");
+            x.style.background = "pink";
+            x.style.transition = ".4s";
+            var z = document.getElementById("list");
+            z.style.display = "none";
+            document.getElementById("datetime").style.display = "none";
+
+        }
+
+        function goHome() {
+            var y = document.getElementById("screen");
+            y.style.background = "linear-gradient(45deg,red,white,cyan)";
+            y.style.transition = ".4s";
+            var z = document.getElementById("list");
+            z.style.display = "block";
+            document.getElementById("datetime").style.display = "block";
+            var x = document.getElementById("upage");
+            x.style.display = "none";
+
+            document.getElementById("wpage").style.display = "none";
+        }
+
+        function goBack() {
+            var y = document.getElementById("screen");
+            y.style.background = "linear-gradient(45deg,red,white,cyan)";
+            y.style.transition = ".4s";
+            var z = document.getElementById("list");
+            z.style.display = "block";
+            document.getElementById("datetime").style.display = "block";
+            var x = document.getElementById("upage");
+            x.style.display = "none";
+            document.getElementById("wpage").style.display = "none";
+
+        }
+        function hidediv() {
+            document.getElementById("page1").style.visibility = "hidden";
+        }
+        setTimeout("hidediv()", 3000);
+
+
+        function showdiv() {
+            document.getElementById("page2").style.visibility = "visible";
+        }
+        setTimeout("showdiv()", 3000);    
+    </script>
+
+</body>
+
+</html>
